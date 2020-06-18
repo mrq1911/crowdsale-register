@@ -52,8 +52,8 @@ const styles = theme => ({
 	},
 });
 
-const providerUrl = "ws://127.0.0.1:7545";
-const crowdsaleRegisterAddress = "0x0033bd22a352c8cb8405c8bb0b02c1b467065d34";
+const providerUrl = "https://rinkeby.infura.io";
+const crowdsaleRegisterAddress = "0xC03A60Da7EbA51b88fc9E41f00260153A38e3D9A";
 
 class App extends Component {
 
@@ -66,7 +66,8 @@ class App extends Component {
 
 	constructor(props) {
 		super(props);
-		this.web3 = new Web3(new Web3.providers.WebsocketProvider(providerUrl));
+		//this.web3 = new Web3(new Web3.providers.WebsocketProvider(providerUrl));
+		this.web3 = new Web3(window.web3.currentProvider);
 		this.crowdsaleRegister = new this.web3.eth.Contract(CrowdsaleRegister, crowdsaleRegisterAddress);
 	}
 
